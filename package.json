@@ -1,0 +1,33 @@
+{
+  "name": "riot-fa",
+  "version": "0.0.1",
+  "description": "Font Awesome icons as Riot components",
+  "main": "fa.js",
+  "peerDependencies": {
+    "riot": "^2.0.11"
+  },
+  "devDependencies": {
+    "font-awesome": "4.3.0",
+    "riot": "^2.0.11",
+    "uglify-js": "^2.4.16"
+  },
+  "scripts": {
+    "prepublish": "riot --ext html fa.html && uglifyjs fa.js -o fa.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cognitom/riot-fa"
+  },
+  "keywords": [
+    "riot",
+    "riot-component",
+    "font-awesome",
+    "icons"
+  ],
+  "author": "Tsutomu Kawamura <tsutomu@librize.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cognitom/riot-fa/issues"
+  },
+  "homepage": "https://github.com/cognitom/riot-fa"
+}
