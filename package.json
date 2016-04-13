@@ -1,18 +1,53 @@
 {
   "name": "riot-fa",
-  "version": "0.0.1",
+  "version": "4.6.0",
   "description": "Font Awesome icons as Riot components",
-  "main": "fa.js",
-  "peerDependencies": {
-    "riot": "^2.0.11"
-  },
+  "files": [
+    "dist"
+  ],
+  "jsnext:main": "dist/riot-fa.es6.js",
+  "main": "dist/riot-fa.cjs.js",
+  "browser": "dist/riot-fa.amd.js",
   "devDependencies": {
-    "font-awesome": "4.3.0",
-    "riot": "^2.0.11",
-    "uglify-js": "^2.4.16"
+    "babel-preset-es2015-rollup": "^1.0.0",
+    "browser-sync": "^2.10.0",
+    "change-case": "^2.3.1",
+    "chokidar-cli": "^1.2.0",
+    "eslint": "^2.5.1",
+    "expect.js": "^0.3.1",
+    "font-awesome": "4.6.0",
+    "fs-promise": "^0.5.0",
+    "gh-pages": "^0.11.0",
+    "karma": "^0.13.19",
+    "karma-mocha": "^0.2.1",
+    "karma-mocha-reporter": "^2.0.0",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-riot": "^1.0.1",
+    "mocha": "^2.3.4",
+    "node-fetch": "^1.5.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "riot": "^2.3.17",
+    "rollup": "^0.25.7",
+    "rollup-plugin-babel": "^2.3.8",
+    "rollup-plugin-commonjs": "^2.1.0",
+    "rollup-plugin-json": "^2.0.0",
+    "rollup-plugin-node-resolve": "^1.5.0",
+    "rollup-plugin-riot": "^0.1.0",
+    "rollup-pluginutils": "^1.3.1",
+    "uglify-js": "^2.6.1"
   },
   "scripts": {
-    "prepublish": "riot --ext html fa.html && uglifyjs fa.js -o fa.min.js"
+    "postinstall": "node op/postinstall.js",
+    "build": "node op/rollup.js",
+    "deploy": "gh-pages -d dist",
+    "pretest": "npm run build",
+    "test": "npm run eslint && npm run karma",
+    "eslint": "eslint src/*.js",
+    "karma": "karma start test/karma.conf.js",
+    "server": "browser-sync start --files 'dist/*.js, dist/index.html' --server 'dist/'",
+    "watch": "chokidar 'src/*' 'demo/*' -c 'npm run build'",
+    "start": "npm run server & npm run watch",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
