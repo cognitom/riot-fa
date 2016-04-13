@@ -1,10 +1,12 @@
-# Font Awesome icons as Riot components
+# Font Awesome icons for Riot.js
 
 ## Installation
 
-[Riot](https://muut.com/riotjs/) Font Awesome is distributed via ??? (I'm thinking which is the best...)
+A simple component for [Font Awesome](https://fortawesome.github.io/Font-Awesome/) on [Riot.js](https://muut.com/riotjs/).
 
-    % npm install riot 'cognitom/riot-fa'
+```bash
+$ npm install riot-fa
+```
 
 ## Usage
 
@@ -16,38 +18,52 @@ That's it.
 
 ## Load components
 
-### In-browser compilation
+### IIFE
 
 ```html
 <!doctype html>
 
 <html>
-  <body>
+  <head>
+    <!-- Loads font separately -->
+    <style>@font-face { font-family: FontAwesome; src: url('fa.woff') format('woff') }</style>
+  </head>
 
+  <body>
     <fa icon="twitter" />
 
-    <script src="node_modules/riot-fa/fa.html" type="riot/tag"></script>
-    <script src="node_modules/riot+compiler.min.js"></script>
-    <script> riot.mount('*') </script>
+    <script src="riot.js"></script>
 
+    <!-- Loads Riot FA -->
+    <script src="riot-fa.js"></script>
+
+    <script> riot.mount('*') </script>
   </body>
 </html>
 ```
 
-### Precompiled
+### Rollup / Browserify / WebPack
 
 ```html
 <!doctype html>
 
 <html>
-  <body>
+  <head>
+    <!-- Loads font separately -->
+    <style>@font-face { font-family: FontAwesome; src: url('fa.woff') format('woff') }</style>
+  </head>
 
+  <body>
     <fa icon="twitter" />
 
-    <script src="node_modules/riot.min.js"></script>
-    <script src="node_modules/riot-fa/fa.min.js" type="riot/tag"></script>
-    <script> riot.mount('*') </script>
-
+    <script src="bundle.js"></script>
   </body>
 </html>
+```
+
+```javascript
+import riot from 'riot'
+import 'riot-fa'
+
+riot.mount('*')
 ```
