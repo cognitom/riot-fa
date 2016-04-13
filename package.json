@@ -37,7 +37,7 @@
     "uglify-js": "^2.6.1"
   },
   "scripts": {
-    "postinstall": "node op/postinstall.js",
+    "prepare": "node op/prepare.js",
     "build": "node op/rollup.js",
     "deploy": "gh-pages -d dist",
     "pretest": "npm run build",
@@ -47,7 +47,7 @@
     "server": "browser-sync start --files 'dist/*.js, dist/index.html' --server 'dist/'",
     "watch": "chokidar 'src/*' 'demo/*' -c 'npm run build'",
     "start": "npm run server & npm run watch",
-    "prepublish": "npm run build"
+    "prepublish": "npm run prepare && npm run build"
   },
   "repository": {
     "type": "git",
