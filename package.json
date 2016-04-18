@@ -1,13 +1,12 @@
 {
   "name": "riot-fa",
-  "version": "4.6.0",
+  "version": "4.6.1",
   "description": "Font Awesome icons as Riot components",
   "files": [
     "dist"
   ],
   "jsnext:main": "dist/riot-fa.es6.js",
   "main": "dist/riot-fa.cjs.js",
-  "browser": "dist/riot-fa.amd.js",
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.0.0",
     "browser-sync": "^2.10.0",
